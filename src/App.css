@@ -1,7 +1,7 @@
 .big__button {
   width: 8.6rem;
   border-radius: 0;
-  font-size: large;
+  font-size: x-large;
   border: 0.5px solid rgb(147, 147, 147);
   /* border-left: 0.5px solid rgb(201, 201, 201); */
 }
@@ -9,7 +9,7 @@
 .norm__button {
   width: 4.3rem;
   border-radius: 0;
-  font-size: large;
+  font-size:x-large;
   border: 0.5px solid rgb(147, 147, 147);
 }
 
