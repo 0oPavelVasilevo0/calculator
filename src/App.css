@@ -1,11 +1,26 @@
 .big__button {
-  width: 8.4rem;
+  width: 8.6rem;
+  border-radius: 0;
+  font-size: large;
+  border: 0.5px solid rgb(147, 147, 147);
+  /* border-left: 0.5px solid rgb(201, 201, 201); */
 }
 
 .norm__button {
-  width: 4.1rem;
+  width: 4.3rem;
+  border-radius: 0;
+  font-size: large;
+  border: 0.5px solid rgb(147, 147, 147);
+}
+
+.bottom__left {
+  border-radius: 0 0 0 7px;
+}
+.bottom__right {
+  border-radius: 0 0 7px 0;
 }
 
 .num__input {
   height: 3.5rem;
+
 }
