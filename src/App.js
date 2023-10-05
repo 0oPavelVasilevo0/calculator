@@ -93,31 +93,31 @@ function App() {
           <MDBCardBody className=' d-flex align-items-center justify-content-center p-0'>
             <MDBRow className='row-cols-1 row-cols-md-1 g-0'>
               <MDBCol className='d-flex  justify-content-center'>
-                <MDBBtn id='seven' size='lg' className='norm__button bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleNumberClick('7')}>7</MDBBtn>
-                <MDBBtn id='eight' size='lg' className='norm__button mx-0 bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleNumberClick('8')}>8</MDBBtn>
-                <MDBBtn id='nine' size='lg' className='norm__button me-0 bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleNumberClick('9')}>9</MDBBtn>
-                <MDBBtn id='divide' size='lg' className='norm__button text-info  bg-warning bg-opacity-50 shadow-0' onClick={() => handleOperatorClick('/')}>/</MDBBtn>
+                <MDBBtn id='seven' size='lg' className='norm__button bg-secondary text-white-50 bg-opacity-50 shadow-0' onClick={() => handleNumberClick('7')}>7</MDBBtn>
+                <MDBBtn id='eight' size='lg' className='norm__button mx-0 bg-secondary text-white-50 bg-opacity-50 shadow-0' onClick={() => handleNumberClick('8')}>8</MDBBtn>
+                <MDBBtn id='nine' size='lg' className='norm__button me-0 bg-secondary text-white-50 bg-opacity-50 shadow-0' onClick={() => handleNumberClick('9')}>9</MDBBtn>
+                <MDBBtn id='divide' size='lg' className='norm__button text-white-50  bg-warning bg-opacity-50 shadow-0' onClick={() => handleOperatorClick('/')}>/</MDBBtn>
               </MDBCol>
               <MDBCol className='d-flex  justify-content-center'>
-                <MDBBtn id='four' size='lg' className='norm__button bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleNumberClick('4')}>4</MDBBtn>
-                <MDBBtn id='five' size='lg' className='norm__button mx-0 bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleNumberClick('5')}>5</MDBBtn>
-                <MDBBtn id='six' size='lg' className='norm__button me-0 bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleNumberClick('6')}>6</MDBBtn>
-                <MDBBtn id='multiply' size='lg' className='norm__button text-info  bg-warning bg-opacity-50 shadow-0'  onClick={() => handleOperatorClick('*')}>*</MDBBtn>
+                <MDBBtn id='four' size='lg' className='norm__button bg-secondary text-white-50 bg-opacity-50 shadow-0' onClick={() => handleNumberClick('4')}>4</MDBBtn>
+                <MDBBtn id='five' size='lg' className='norm__button mx-0 bg-secondary text-white-50 bg-opacity-50 shadow-0' onClick={() => handleNumberClick('5')}>5</MDBBtn>
+                <MDBBtn id='six' size='lg' className='norm__button me-0 bg-secondary text-white-50 bg-opacity-50 shadow-0' onClick={() => handleNumberClick('6')}>6</MDBBtn>
+                <MDBBtn id='multiply' size='lg' className='norm__button text-white-50 bg-warning bg-opacity-50 shadow-0'  onClick={() => handleOperatorClick('*')}>*</MDBBtn>
               </MDBCol>
               <MDBCol className='d-flex  justify-content-center'>
-                <MDBBtn id='one' size='lg' className='norm__button bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleNumberClick('1')}>1</MDBBtn>
-                <MDBBtn id='two' size='lg' className='norm__button mx-0 bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleNumberClick('2')}>2</MDBBtn>
-                <MDBBtn id='three' size='lg' className='norm__button me-0 bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleNumberClick('3')}>3</MDBBtn>
-                <MDBBtn id='subtract' size='lg' className='norm__button text-info  bg-warning bg-opacity-50 shadow-0'  onClick={() => handleOperatorClick('-')} >-</MDBBtn>
+                <MDBBtn id='one' size='lg' className='norm__button bg-secondary text-white-50 bg-opacity-50 shadow-0' onClick={() => handleNumberClick('1')}>1</MDBBtn>
+                <MDBBtn id='two' size='lg' className='norm__button mx-0 bg-secondary  text-white-50 bg-opacity-50 shadow-0' onClick={() => handleNumberClick('2')}>2</MDBBtn>
+                <MDBBtn id='three' size='lg' className='norm__button me-0 bg-secondary text-white-50 bg-opacity-50 shadow-0' onClick={() => handleNumberClick('3')}>3</MDBBtn>
+                <MDBBtn id='subtract' size='lg' className='norm__button text-white-50  bg-warning bg-opacity-50 shadow-0'  onClick={() => handleOperatorClick('-')} >-</MDBBtn>
               </MDBCol>
               <MDBCol className='d-flex  justify-content-center'>
-                <MDBBtn id='zero' size='lg' className='big__button bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleNumberClick('0')}>0</MDBBtn>
-                <MDBBtn id='decimal' size='lg' className='norm__button mx-0 bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleDecimalClick('.')}>.</MDBBtn>
-                <MDBBtn id='add' size='lg' className='norm__button text-info  bg-warning bg-opacity-50 shadow-0'  onClick={() => handleOperatorClick('+')}>+</MDBBtn>
+                <MDBBtn id='zero' size='lg' className='big__button bg-secondary text-white-50 bg-opacity-50 shadow-0' onClick={() => handleNumberClick('0')}>0</MDBBtn>
+                <MDBBtn id='decimal' size='lg' className='norm__button mx-0 bg-secondary text-white-50 bg-opacity-50 shadow-0' onClick={() => handleDecimalClick('.')}>.</MDBBtn>
+                <MDBBtn id='add' size='lg' className='norm__button text-white-50  bg-warning bg-opacity-50 shadow-0'  onClick={() => handleOperatorClick('+')}>+</MDBBtn>
               </MDBCol>
               <MDBCol className='d-flex  justify-content-center'>
-                <MDBBtn id='clear' size='lg' className='big__button bottom__left me-0 bg-danger text-info bg-opacity-50 shadow-0' onClick={() => handleClearClick()}>AC</MDBBtn>
-                <MDBBtn id='equals' size='lg' className='big__button bottom__right bg-success text-info bg-opacity-50 shadow-0' onClick={() => handleEqualsClick()}>=</MDBBtn>
+                <MDBBtn id='clear' size='lg' className='big__button bottom__left me-0 bg-danger text-white-50 bg-opacity-50 shadow-0' onClick={() => handleClearClick()}>AC</MDBBtn>
+                <MDBBtn id='equals' size='lg' className='big__button bottom__right bg-success text-white-50 bg-opacity-50 shadow-0' onClick={() => handleEqualsClick()}>=</MDBBtn>
               </MDBCol>
             </MDBRow>
           </MDBCardBody>
