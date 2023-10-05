@@ -7,22 +7,45 @@ function App() {
   const [input, setInput] = useState('');
   const [output, setOutput] = useState('0');
 
+
+
   const handleNumberClick = (num) => {
-    if (!(input === '0' && num === '0')) {
+    // If there's a result from the previous calculation, start a new input
+    if (output === 'Error' || (input === '' && output !== '0')) {
+      setInput(num);
+      setOutput(num);
+    } else {
       setInput((prevInput) => prevInput + num);
       setOutput((prevOutput) => prevOutput === '0' ? num : prevOutput + num);
     }
   };
 
   const handleOperatorClick = (operator) => {
-    if (input !== '' && !isNaN(input[input.length - 1])) {
+    // If there's a result from the previous calculation, use it as the starting input
+    if (output === 'Error' || (input === '' && output !== '0')) {
+      setInput(output + operator);
+      setOutput(output + operator);
+    } else if (!isNaN(input[input.length - 1]) || input[input.length - 1] === '.') {
+      // If the last character is a number or a decimal point, append the new operator
       setInput((prevInput) => prevInput + operator);
       setOutput((prevOutput) => prevOutput + operator);
+    } else if (operator === '-') {
+      // If the new operator is '-', treat it as a negative number
+      setInput((prevInput) => prevInput + operator);
+      setOutput((prevOutput) => prevOutput + operator);
+    } else {
+      // Replace the last operator with the new operator
+      setInput((prevInput) => prevInput.slice(0, -1) + operator);
+      setOutput((prevOutput) => prevOutput.slice(0, -1) + operator);
     }
   };
 
+
+
   const handleDecimalClick = () => {
-    if (input === '' || (input !== '' && !input.includes('.'))) {
+    const lastNumber = input.split(/[-+*/]/).pop(); // Get the last number in the input
+
+    if (input === '' || (lastNumber && !lastNumber.includes('.'))) {
       setInput((prevInput) => prevInput + '.');
       setOutput((prevOutput) => prevOutput + '.');
     }
@@ -36,8 +59,12 @@ function App() {
   const handleEqualsClick = () => {
     try {
       // eslint-disable-next-line no-eval
-      const result = eval(input);
-      setInput('');
+      let result = eval(input);
+
+      // Round the result to a specific number of decimal places
+      result = parseFloat(result.toFixed(4)); // Round to 4 decimal places
+
+      setInput(result.toString());
       setOutput(result.toString());
     } catch (error) {
       setOutput('Error');
@@ -57,28 +84,28 @@ function App() {
                 <MDBBtn id='seven' size='lg' className='norm__button bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleNumberClick('7')}>7</MDBBtn>
                 <MDBBtn id='eight' size='lg' className='norm__button mx-0 bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleNumberClick('8')}>8</MDBBtn>
                 <MDBBtn id='nine' size='lg' className='norm__button me-0 bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleNumberClick('9')}>9</MDBBtn>
-                <MDBBtn id='divide' size='lg' className='norm__button text-warning  bg-secondary bg-opacity-50 shadow-0' onClick={() => handleOperatorClick('/')}>/</MDBBtn>
+                <MDBBtn id='divide' size='lg' className='norm__button text-info  bg-warning bg-opacity-50 shadow-0' onClick={() => handleOperatorClick('/')}>/</MDBBtn>
               </MDBCol>
               <MDBCol className='d-flex  justify-content-center'>
                 <MDBBtn id='four' size='lg' className='norm__button bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleNumberClick('4')}>4</MDBBtn>
                 <MDBBtn id='five' size='lg' className='norm__button mx-0 bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleNumberClick('5')}>5</MDBBtn>
                 <MDBBtn id='six' size='lg' className='norm__button me-0 bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleNumberClick('6')}>6</MDBBtn>
-                <MDBBtn id='multiply' size='lg' className='norm__button text-warning  bg-secondary bg-opacity-50 shadow-0'  onClick={() => handleOperatorClick('*')}>*</MDBBtn>
+                <MDBBtn id='multiply' size='lg' className='norm__button text-info  bg-warning bg-opacity-50 shadow-0'  onClick={() => handleOperatorClick('*')}>*</MDBBtn>
               </MDBCol>
               <MDBCol className='d-flex  justify-content-center'>
                 <MDBBtn id='one' size='lg' className='norm__button bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleNumberClick('1')}>1</MDBBtn>
                 <MDBBtn id='two' size='lg' className='norm__button mx-0 bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleNumberClick('2')}>2</MDBBtn>
                 <MDBBtn id='three' size='lg' className='norm__button me-0 bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleNumberClick('3')}>3</MDBBtn>
-                <MDBBtn id='subtract' size='lg' className='norm__button text-warning  bg-secondary bg-opacity-50 shadow-0'  onClick={() => handleOperatorClick('-')} >-</MDBBtn>
+                <MDBBtn id='subtract' size='lg' className='norm__button text-info  bg-warning bg-opacity-50 shadow-0'  onClick={() => handleOperatorClick('-')} >-</MDBBtn>
               </MDBCol>
               <MDBCol className='d-flex  justify-content-center'>
                 <MDBBtn id='zero' size='lg' className='big__button bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleNumberClick('0')}>0</MDBBtn>
                 <MDBBtn id='decimal' size='lg' className='norm__button mx-0 bg-secondary text-info bg-opacity-50 shadow-0' onClick={() => handleDecimalClick('.')}>.</MDBBtn>
-                <MDBBtn id='add' size='lg' className='norm__button text-warning  bg-secondary bg-opacity-50 shadow-0'  onClick={() => handleOperatorClick('+')}>+</MDBBtn>
+                <MDBBtn id='add' size='lg' className='norm__button text-info  bg-warning bg-opacity-50 shadow-0'  onClick={() => handleOperatorClick('+')}>+</MDBBtn>
               </MDBCol>
               <MDBCol className='d-flex  justify-content-center'>
-                <MDBBtn id='clear' size='lg' className='big__button bottom__left me-0 bg-secondary text-danger bg-opacity-50 shadow-0' onClick={() => handleClearClick()}>AC</MDBBtn>
-                <MDBBtn id='equals' size='lg' className='big__button bottom__right bg-secondary text-success bg-opacity-50 shadow-0' onClick={() => handleEqualsClick()}>=</MDBBtn>
+                <MDBBtn id='clear' size='lg' className='big__button bottom__left me-0 bg-danger text-info bg-opacity-50 shadow-0' onClick={() => handleClearClick()}>AC</MDBBtn>
+                <MDBBtn id='equals' size='lg' className='big__button bottom__right bg-success text-info bg-opacity-50 shadow-0' onClick={() => handleEqualsClick()}>=</MDBBtn>
               </MDBCol>
             </MDBRow>
           </MDBCardBody>
