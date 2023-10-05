@@ -9,6 +9,7 @@ function App() {
 
 
 
+
   const handleNumberClick = (num) => {
     // If there's a result from the previous calculation, start a new input
     if (output === 'Error' || (input === '' && output !== '0')) {
@@ -20,25 +21,36 @@ function App() {
     }
   };
 
+
   const handleOperatorClick = (operator) => {
-    // If there's a result from the previous calculation, use it as the starting input
+    // If there's a result from the previous calculation, start a new input with the result as the initial value
     if (output === 'Error' || (input === '' && output !== '0')) {
       setInput(output + operator);
       setOutput(output + operator);
     } else if (!isNaN(input[input.length - 1]) || input[input.length - 1] === '.') {
-      // If the last character is a number or a decimal point, append the new operator
       setInput((prevInput) => prevInput + operator);
       setOutput((prevOutput) => prevOutput + operator);
     } else if (operator === '-') {
-      // If the new operator is '-', treat it as a negative number
       setInput((prevInput) => prevInput + operator);
       setOutput((prevOutput) => prevOutput + operator);
     } else {
-      // Replace the last operator with the new operator
-      setInput((prevInput) => prevInput.slice(0, -1) + operator);
-      setOutput((prevOutput) => prevOutput.slice(0, -1) + operator);
+      let newInput = input;
+      let newOutput = output;
+
+      // Remove all consecutive operators before adding the new one
+      while (['+', '-', '*', '/'].includes(newInput[newInput.length - 1])) {
+        newInput = newInput.slice(0, -1);
+        newOutput = newOutput.slice(0, -1);
+      }
+
+      newInput += operator;
+      newOutput += operator;
+
+      setInput(newInput);
+      setOutput(newOutput);
     }
   };
+
 
 
 
