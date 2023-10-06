@@ -87,7 +87,7 @@ function App() {
     < MDBContainer fluid  className=' d-flex align-items-center justify-content-center px-0 bg-dark' style={{ height: '100vh' }} >
       <MDBContainer className=' border border-secondary rounded-3 d-flex justify-content-center align-items-center p-0' style={{ maxWidth: '17.2rem' }}>
         <MDBCard shadow='0' className=' bg-dark rounded-3'>
-          <MDBContainer id='display' fluid className=' bg-secondary  bg-opacity-25 bg-gradient rounded-top border-bottom border-secondary d-flex align-items-center justify-content-end text-light  mt-0 ' style={{ height: '5rem', width: '17.1rem', fontSize: '1.6rem' }}>
+          <MDBContainer id='display' fluid className=' bg-secondary  bg-opacity-25 bg-gradient rounded-top border-bottom border-secondary d-flex align-items-center justify-content-end text-light  mt-0 ' style={{ height: '5rem', width: '17.1rem', fontSize: `${output.length > 9 ? 28 / output.length : 3}rem`, fontWeight: 'lighter' }}>
             {output}
           </MDBContainer>
           <MDBCardBody className=' d-flex align-items-center justify-content-center p-0'>
